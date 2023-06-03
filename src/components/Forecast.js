@@ -23,7 +23,7 @@ export default function Forecast() {
                             return <div key={forecast.date} className="card mx-2 my-2" style={{ "width": "18rem" }}>
                                 <div className="condition d-flex">
                                     <img src={`http:${forecast.day.condition.icon}`} className="card-img-top" alt="..." style={{ 'width': '100px' }}></img>
-                                    <p className='text-right'><b><span class="badge bg-danger">{forecast.day.condition.text}</span></b></p>
+                                    <p className='text-right'><b><span className="badge bg-danger">{forecast.day.condition.text}</span></b></p>
                                 </div>
                                 <div className="card-body">
                                     <h5 className="card-title">{forecast.date}</h5>

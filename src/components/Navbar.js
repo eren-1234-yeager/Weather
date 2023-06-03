@@ -6,16 +6,17 @@ function Navbar(props) {
     const {setSearch}=useContext(weatherContext);
     const [searchQuery, setSearchQuery] = useState('')
     
-    const navigate = useNavigate();
+    const navigate = useNavigate();//It is use to redirect the user (without reloading)
 
     const onChange=(e)=>{
-        setSearchQuery(e.target.value)
+        setSearchQuery(e.target.value)//This sets searchQuery to the value of input in search(input) field
     }
     
     const onSubmit=(e)=>{
-        e.preventDefault();
-        setSearch(searchQuery);
-        navigate('/');
+        //This envokes when a person search
+        e.preventDefault();//Prevent Page from being reloaded
+        setSearch(searchQuery);//setSearch to searchQuery
+        navigate('/');//redirects to '/'
     }
     return (
         <>

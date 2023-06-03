@@ -27,7 +27,6 @@ export default function WeatherProvider(props) {
         setLocDetails(jsonData.location)
         setForecasts(jsonData.forecast.forecastday)
 
-        console.log(forecasts)
         //Setting Refs
         condition.current = jsonData.current.condition;
 

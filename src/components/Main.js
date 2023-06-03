@@ -3,12 +3,12 @@ import weatherContext from '../contexts/weatherContext'
 import { Link } from 'react-router-dom';
 
 function Main() {
-  const { search, details, condition, locDetails } = useContext(weatherContext);
+  const { search, details, condition, locDetails } = useContext(weatherContext);//Getting values from context (weatherContext in this case).
 
   let last_updated_date = new Date(details.last_updated);
   return (
     <>
-      {!search &&
+      {!search &&//If the search field is empty ,then show this...
         <div className='text-center'><h1>Enter a Place Name...</h1></div>
       }
 
@@ -35,7 +35,9 @@ function Main() {
 
             {/* This is a button to get forecast of the given area */}
             <div className="forecast d-flex justify-content-center">
-              {search && <Link type="button" class="btn btn-danger" to={`/forecast/${search}`}>View forecast of {search}</Link>}
+              {!details.error &&//If there is no error ,then show this button
+                <Link type="button" className="btn btn-danger" to={`/forecast/${search}`}>View forecast of {search}</Link>
+              }
             </div>
           </div>
         </div>
