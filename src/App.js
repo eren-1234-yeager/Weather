@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import WeatherProvider from './contexts/WeatherProvider';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Forecast from './components/Forecast';
+import Pagenotfound from './components/Pagenotfound';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Main />} />
             <Route path='/forecast/:city' element={<Forecast/>} />
+            <Route path='*' element={<Pagenotfound/>}></Route>
           </Routes>
         </BrowserRouter>
       </WeatherProvider>
