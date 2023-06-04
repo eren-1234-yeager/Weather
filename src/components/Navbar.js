@@ -31,9 +31,6 @@ function Navbar(props) {
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/">Link</Link>
-                            </li>
 
                         </ul>
                         <form className="d-flex" role="search" onSubmit={onSubmit}>

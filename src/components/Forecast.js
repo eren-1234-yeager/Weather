@@ -52,6 +52,7 @@ export default function Forecast() {
                 </div>
             }
             <hr />
+            <marquee><b>Note:</b> Date is in format of: <b>Year-Month-Date</b></marquee>
         </>
     )
 }
