@@ -3,11 +3,11 @@ import weatherContext from './weatherContext'
 
 export default function WeatherProvider(props) {
   //States
-
   const [search, setSearch] = useState('Ahmedabad');
   const [details, setDetails] = useState({});
   const [locDetails, setLocDetails] = useState({});
   const [forecasts, setForecasts] = useState([])
+
   //Refs
   const condition = useRef(0)
 
@@ -29,10 +29,8 @@ export default function WeatherProvider(props) {
 
         //Setting Refs
         condition.current = jsonData.current.condition;
-
-
-
-      } else {
+                                                  
+      } else {//If response status is not 200 ,then set states and refs to this:(See Below)
 
         setLocDetails({ "country": "No Data Found" })
         setDetails({ 'error': 'No Data Found' })
@@ -44,6 +42,7 @@ export default function WeatherProvider(props) {
     fetchWeather();
     // eslint-disable-next-line
   }, [search])
+  
   return (
     <>
       <weatherContext.Provider value={{ search, setSearch, details, setDetails, condition, locDetails,forecasts }}>

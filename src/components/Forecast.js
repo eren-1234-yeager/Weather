@@ -3,7 +3,8 @@ import weatherContext from '../contexts/weatherContext'
 import { useParams } from "react-router-dom";
 
 export default function Forecast() {
-    const { forecasts, setSearch } = useContext(weatherContext)//-->This is an array containing forecast details of n days... So i can use .map() 
+    const { forecasts, setSearch } = useContext(weatherContext)
+    //forecasts is an array containing forecast details of {n} days... So i can use .map() 
     const { city } = useParams();
     useEffect(() => {
 
@@ -42,8 +43,6 @@ export default function Forecast() {
                                     <p className="card-text">Moonrise: {forecast.astro.moonrise}</p>
                                     <p className="card-text">Moonset: {forecast.astro.moonset}</p>
 
-                                    {/* <a href="#" className="card-link">Card link</a>
-                        <a href="#" className="card-link">Another link</a> */}
                                 </div>
                             </div>
                         }
