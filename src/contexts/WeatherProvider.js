@@ -7,7 +7,7 @@ export default function WeatherProvider(props) {
   const [details, setDetails] = useState({});
   const [locDetails, setLocDetails] = useState({});
   const [forecasts, setForecasts] = useState([])
-
+  const [loading, setLoading] = useState(null)
   //Refs
   const condition = useRef(0)
 
@@ -15,6 +15,8 @@ export default function WeatherProvider(props) {
   useEffect(() => {
 
     const fetchWeather = async () => {
+      setLoading(true)
+
       let url = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${search}&days=${props.days}&aqi=yes&alerts=yes`;
 
       let response = await fetch(url);
@@ -29,23 +31,26 @@ export default function WeatherProvider(props) {
 
         //Setting Refs
         condition.current = jsonData.current.condition;
-                                                  
+
       } else {//If response status is not 200 ,then set states and refs to this:(See Below)
 
         setLocDetails({ "country": "No Data Found" })
         setDetails({ 'error': 'No Data Found' })
         condition.current = { text: "No Data Found" };
-        
+
       }
+
+      setLoading(null)
+
 
     }
     fetchWeather();
     // eslint-disable-next-line
   }, [search])
-  
+
   return (
     <>
-      <weatherContext.Provider value={{ search, setSearch, details, setDetails, condition, locDetails,forecasts }}>
+      <weatherContext.Provider value={{ search, setSearch, details, setDetails, condition, locDetails, forecasts, loading }}>
         {props.children}
       </weatherContext.Provider>
     </>

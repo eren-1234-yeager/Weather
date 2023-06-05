@@ -3,7 +3,7 @@ import weatherContext from '../contexts/weatherContext'
 import { useParams } from "react-router-dom";
 
 export default function Forecast() {
-    const { forecasts, setSearch } = useContext(weatherContext)
+    const { forecasts, setSearch,loading } = useContext(weatherContext)
     //forecasts is an array containing forecast details of {n} days... So i can use .map() 
     const { city } = useParams();
     useEffect(() => {
@@ -15,6 +15,7 @@ export default function Forecast() {
     return (
         <>
             {city &&
+            !loading &&
                 <div>
                     <h1 className='text-center my-2'>Forecast of {city}</h1>
                     <div className="container my-4 d-flex justify-content-center flex-wrap ">
@@ -52,7 +53,9 @@ export default function Forecast() {
                 </div>
             }
             <hr />
-            <marquee><b>Note:</b> Date is in format of: <b>Year-Month-Date</b></marquee>
+            {// eslint-disable-next-line
+                <marquee><b>Note:</b> Date is in format of: <b>Year-Month-Date</b></marquee>
+            }
         </>
     )
 }

@@ -3,7 +3,7 @@ import weatherContext from '../contexts/weatherContext'
 import { Link } from 'react-router-dom';
 
 function Main() {
-  const { search, details, condition, locDetails } = useContext(weatherContext);//Getting values from context (weatherContext in this case).
+  const { search, details, condition, locDetails, loading } = useContext(weatherContext);//Getting values from context (weatherContext in this case).
 
   let last_updated_date = new Date(details.last_updated);
   return (
@@ -13,6 +13,7 @@ function Main() {
       }
 
       {search &&
+        !loading &&
         <div className="p-5 my-4 mb-4 bg-body-tertiary rounded-3 container">
 
           <div className="container-fluid py-5">

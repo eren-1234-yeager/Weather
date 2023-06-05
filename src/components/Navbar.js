@@ -1,18 +1,19 @@
-import React,{useContext,useState} from 'react'
+import React, { useContext, useState } from 'react'
 import weatherContext from '../contexts/weatherContext'
-import {Link,useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Loader from './Loader';
 
 function Navbar(props) {
-    const {setSearch}=useContext(weatherContext);
+    const { setSearch, loading } = useContext(weatherContext);
     const [searchQuery, setSearchQuery] = useState('')
-    
+
     const navigate = useNavigate();//It is use to redirect the user (without reloading)
 
-    const onChange=(e)=>{
+    const onChange = (e) => {
         setSearchQuery(e.target.value)//This sets searchQuery to the value of input in search(input) field
     }
-    
-    const onSubmit=(e)=>{
+
+    const onSubmit = (e) => {
         //This envokes when a person search
         e.preventDefault();//Prevent Page from being reloaded
         setSearch(searchQuery);//setSearch to searchQuery
@@ -20,6 +21,7 @@ function Navbar(props) {
     }
     return (
         <>
+
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">{props.title}</Link>
@@ -34,12 +36,14 @@ function Navbar(props) {
 
                         </ul>
                         <form className="d-flex" role="search" onSubmit={onSubmit}>
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={onChange}/>
-                                <button className="btn btn-danger" type="submit">Search</button>
+                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={onChange} />
+                            <button className="btn btn-danger" type="submit">Search</button>
                         </form>
                     </div>
                 </div>
             </nav>
+
+            {loading && <Loader />}
         </>
     )
 }
