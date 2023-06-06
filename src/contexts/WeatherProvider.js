@@ -42,7 +42,6 @@ export default function WeatherProvider(props) {
 
       setLoading(null)
 
-
     }
     fetchWeather();
     // eslint-disable-next-line

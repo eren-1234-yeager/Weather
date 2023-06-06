@@ -9,6 +9,7 @@ export default function Forecast() {
     useEffect(() => {
 
         setSearch(city);
+        document.title=`Forecast of ${city}`
         // eslint-disable-next-line 
     }, [city])
 

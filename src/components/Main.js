@@ -6,6 +6,7 @@ function Main() {
   const { search, details, condition, locDetails, loading } = useContext(weatherContext);//Getting values from context (weatherContext in this case).
 
   let last_updated_date = new Date(details.last_updated);
+  document.title=`Weather of ${search}`
   return (
     <>
       {!search &&//If the search field is empty ,then show this...
